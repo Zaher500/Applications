@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,17 +21,23 @@ class UserService
         $data['password'] = Hash::make($data['password']);
 
         // Pass data to the repository
-        return $this->userRepository->create($data);
+        return $this->userRepository->register_user($data);
     }
 
-    public function login(array $credentials)
+    public function login(array $credentials, $role_id)
     {
-        $user = $this->userRepository->findByEmail($credentials['email']);
-            
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            return $user; // Successful login
+        if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->role_id == $role_id) {
+            return $user;  // تسجيل الدخول ناجح والدور مطابق
+        } else {
+            Auth::logout(); // الدور غير مطابق، اقطع الجلسة
+            return false;
         }
 
-        return false; // Invalid credentials
+
+    return false;
     }
+}
 }

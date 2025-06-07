@@ -1,0 +1,140 @@
+              @font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #a146f4, #41a4f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 70%),
+                        radial-gradient(circle, rgba(255,255,255,0.05) 20%, transparent 70%);
+            background-size: 200px 200px;
+            animation: animateBackground 60s linear infinite;
+        }
+
+        @keyframes animateBackground {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .container {
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .form-box h1 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            color: white;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #fff;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            background: linear-gradient(to right, #41a4f5, #a146f4);
+            color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.green {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+        }
+        .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    color: white;
+    outline: none;
+    appearance: none; /* إخفاء السهم الافتراضي */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1em;
+}
+
+.input-group select option {
+    color: black; /* لأن الخلفية شفافة، نظهر النص بوضوح */
+}
+
+.input-group select:invalid {
+    color: rgba(255, 255, 255, 0.7); /* لون النص الافتراضي */
+}
+
+.input-group select:focus {
+    border-bottom: 2px solid #fff;
+}

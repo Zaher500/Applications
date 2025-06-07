@@ -1,0 +1,119 @@
+        @font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(135deg, #a146f4, #41a4f5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 70%),
+                  radial-gradient(circle, rgba(255,255,255,0.05) 20%, transparent 70%);
+      background-size: 200px 200px;
+      animation: animateBackground 60s linear infinite;
+    }
+
+    @keyframes animateBackground {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h2 {
+      color: white;
+      font-size: 2em;
+      margin-bottom: 30px;
+      z-index: 1;
+    }
+
+    form {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-bottom: 2px solid #fff;
+      background: transparent;
+      color: white;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card {
+      background: linear-gradient(to right, #41a4f5, #a146f4);
+      color: white;
+    }
+
+    .paypal {
+      background: linear-gradient(to right, #41a4f5, #a146f4);
+      color: white;
+    }
+
+    .return_to_home {
+      z-index: 1;
+      background: #ffffff33;
+      color: white;
+      border: 1px solid white;
+      width: auto;
+      padding: 10px 20px;
+      margin-top: 10px;
+      backdrop-filter: blur(5px);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
